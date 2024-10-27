@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with ChatGPT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 id="welcome-message"></h1> <!-- Welcome message will be set by JavaScript -->
+
+    <div id="theme-switcher">
+        <button id="light-theme" onclick="changeTheme('light')">☀️</button>
+        <button id="dark-theme" onclick="changeTheme('dark')">🌙</button>
+        <button id="blue-theme" onclick="changeTheme('blue')">💙</button>
+        <button id="green-theme" onclick="changeTheme('green')">💚</button>
+    </div>
+
+    <div id="chat-container">
+        <div id="chat-box"></div>
+        <textarea id="user-input" placeholder="Type your message..."></textarea>
+        <button onclick="sendMessage()">Send</button>
+        <button onclick="startVoiceRecognition()">🎤</button> <!-- Voice input button -->
+        <input type="file" id="file-input" accept="image/*,video/*" style="display: none;" onchange="handleFileUpload()">
+        <button id="upload-button" onclick="document.getElementById('file-input').click()">➕ Upload</button> <!-- Plus button for file upload -->
+    </div>
+
+    <footer>
+        <p>Created by Mr. Ahmad Shah</p> <!-- Credit message at the bottom -->
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/923277913201" target="_blank" id="whatsapp-button">Message on WhatsApp</a>
+
+    <script src="script.js"></script>
+    <script>
+        // Function to prompt the user for their name and display the welcome message
+        function welcomeUser() {
+            const userName = prompt("Please enter your name:");
+            const welcomeMessage = userName ? `السلام عليكم - بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ - Welcome, ${userName}!` : "السلام عليكم - بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ - Welcome!";
+            document.getElementById('welcome-message').innerText = welcomeMessage;
+        }
+
+        // Call the function when the page loads
+        window.onload = welcomeUser;
+
+        // Function to change themes
+        function changeTheme(theme) {
+            document.body.className = theme; // Change the body's class to the selected theme
+        }
+
+        // Function to start voice recognition
+        function startVoiceRecognition() {
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = 'en-US';
+            recognition.start();
+
+            recognition.onresult = function(event) {
+                const transcript = event.results[0][0].transcript;
+                document.getElementById('user-input').value = transcript; // Set the textarea value to the recognized speech
+            };
+
+            recognition.onerror = function(event) {
+                console.error('Speech recognition error', event.error);
+            };
+        }
+
+        // Function to handle file upload
+        function handleFileUpload() {
+            const fileInput = document.getElementById('file-input');
+            const file = fileInput.files[0];
+
+            if (file) {
+                const chatBox = document.getElementById('chat-box');
+                chatBox.innerHTML += `<div>Uploaded ${file.type}: ${file.name}</div>`;
+                // You can add code here to process the file and get information about it
+                const userMessage = prompt("Please provide your prompt related to the uploaded file:");
+                chatBox.innerHTML += `<div>Your Prompt: ${userMessage}</div>`;
+                chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
+            }
+        }
+    </script>
+</body>
+</html>

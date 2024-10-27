@@ -1,0 +1,124 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f9; /* Default light theme */
+    transition: background-color 0.5s, color 0.5s; /* Smooth transition for themes */
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#theme-switcher {
+    margin-bottom: 10px;
+}
+
+#theme-switcher button {
+    margin: 0 5px;
+    font-size: 20px; /* Larger size for theme buttons */
+    cursor: pointer;
+}
+
+#chat-container {
+    width: 400px;
+    max-width: 90%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #fff;
+}
+
+#chat-box {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#user-input {
+    width: 100%;
+    height: 50px;
+    padding: 8px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    resize: none;
+    margin-bottom: 10px;
+}
+
+button {
+    width: 48%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+#whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #25D366; /* WhatsApp Green Color */
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Ensure it stays on top */
+}
+
+#whatsapp-button:hover {
+    background-color: #1ebe5d;
+}
+
+/* Theme styles */
+body.light {
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+body.dark {
+    background-color: #333;
+    color: #f4f4f9;
+}
+
+body.blue {
+    background-color: #add8e6;
+    color: #333;
+}
+
+body.green {
+    background-color: #98fb98;
+    color: #333;
+}
+
+#upload-button {
+    background-color: #28a745; /* Green color for upload button */
+    color: white;
+    font-weight: bold;
+}
+
+#upload-button:hover {
+    background-color: #218838;
+}
+
